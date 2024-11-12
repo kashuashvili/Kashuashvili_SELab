@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <cmath>  
-
+//yooo
 using namespace std;
 
 int main() {
@@ -95,7 +95,7 @@ int main() {
                         break;
                     }
                 }
-
+             
                 while (true) {
                     cout << "Enter the value of last x (b): ";
                     cin >> b;
