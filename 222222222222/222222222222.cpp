@@ -51,7 +51,7 @@ int main() {
                 if (x < 0) {
                     for (int i = 1; i <= n; i++) {
                         y += pow((x + i), 2);
-                    } //meow
+                    } 
                     y += 5 * x;
                 }
                 else {
