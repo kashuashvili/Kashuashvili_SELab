@@ -4,15 +4,12 @@
 #include <sstream>
 using namespace std;
 
-void checkValidInput() {
-    while (cin.fail()) {
-        cin.clear();
-        cin.ignore();
-        throw runtime_error("Invalid input! Please enter valid numbers.");
+void checkInput() {
+    if (cin.fail()) {
+        throw runtime_error("Invalid input!");
     }
 }
 int checkValidN(int n) {
-    
     if (n <= 2) {
         throw runtime_error("Invalid input! Please enter valid numbers.");
     }
@@ -87,19 +84,19 @@ int main() {
         try {
             int n, range;
             double x, y = 0;
-            string input_n;
             cout << "Do you want to use range? (1 if yes / 0 if no): ";
             cin >> range;
-            checkValidInput();
+            checkInput();
 
             if (range == 0) {
                 cout << "Enter the value of n (>2), n = ";
                 cin >> n;
+                checkInput();
                 checkValidN(n);
 
                 cout << "Enter the value of x, x = ";
                 cin >> x;
-                checkValidInput();
+                checkInput();
 
                 y = calculateNoRange(n, x);
                 cout << "y = " << y << endl;
@@ -109,6 +106,8 @@ int main() {
 
                 cout << "Enter the value of n (>2), n = ";
                 cin >> n;
+                checkInput();
+                checkValidN(n);
 
                 try {
                     n = checkValidN(n);
@@ -120,26 +119,22 @@ int main() {
 
                 cout << "Enter the value of starting x (a): ";
                 cin >> a;
-                checkValidInput();
-
                 cout << "Enter the value of last x (b): ";
                 cin >> b;
                 checkRange(a, b);
+                checkInput();
 
                 cout << "Enter the value of step (h): ";
                 cin >> h;
                 checkH(h);
+                checkInput();
 
                 calculateWithRange(n, a, b, h);
             }
-
-
             else {
                 throw runtime_error("Invalid option for range! Please enter 1 or 0.");
             }
         }
-    
-
 
         catch (const runtime_error& e) {
             cout << "Error: " << e.what() << endl;
@@ -160,9 +155,8 @@ int main() {
         }
         catch (const runtime_error& e) {
             cout << "Error: " << e.what() << endl;
-            repeat_program = false; 
+            repeat_program = false;
         }
-        }
-        return 0;
-   
+    }
+    return 0;
 }
